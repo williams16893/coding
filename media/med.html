@@ -1,0 +1,38 @@
+media settings
+    URLS.PY under
+    <br>
+            +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    <br>
+    MEDIA_URL = '/media/'
+    <br>
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    <br><br><br>
+
+
+static settings :URLS.PY MODULES
+    <br>
+    from django.conf import settings
+    <br>
+    from django.conf.urls.static import static
+    <p></p>
+    <p></p>
+models.py 
+    <br>
+    from django.conf import settings
+    <br>
+    or
+    <br>
+    from django.contrib.auth.models import User
+<p></p>
+<p></p>
+def index(request): <br>
+    latest = Product.objects.filter(latest=True).order_by('-price') <br>
+    trending = Product.objects.filter(trending=True).order_by('price') <br>
+
+    context = { <br>
+        'vic':latest, <br>
+        'math':trending, <br>
+    } <br>
+
+    return render(request, 'index.html', context)
+
